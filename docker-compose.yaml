@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  dotnetdemoapi:
+    build:
+      context: .
+      dockerfile: dotnetdemoapi/dotnetdemoapi/Dockerfile
+    image: ${IMAGE_NAME:-dotnetdemoapi}:${IMAGE_TAG:-latest}
+    ports:
+      - "${HOST_PORT:-5151}:5151"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
+    restart: unless-stopped
