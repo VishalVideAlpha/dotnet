@@ -7,8 +7,7 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
+
     // Expose OpenAPI spec
     app.MapOpenApi();
 
@@ -18,7 +17,7 @@ if (app.Environment.IsDevelopment())
         options.SwaggerEndpoint("/openapi/v1.json", "My API v1");
         options.RoutePrefix = "swagger"; // optional: serves at /swagger
     });
-}
+
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
