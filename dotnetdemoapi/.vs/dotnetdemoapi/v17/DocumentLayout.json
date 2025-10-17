@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\dotnetdemoapi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0BDD5A95-6B8B-4DD0-A469-D4A0CF55B201}|dotnetdemoapi\\dotnetdemoapi.csproj|e:\\dotnetdemoapi\\dotnetdemoapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0BDD5A95-6B8B-4DD0-A469-D4A0CF55B201}|dotnetdemoapi\\dotnetdemoapi.csproj|solutionrelative:dotnetdemoapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BDD5A95-6B8B-4DD0-A469-D4A0CF55B201}|dotnetdemoapi\\dotnetdemoapi.csproj|e:\\dotnetdemoapi\\dotnetdemoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BDD5A95-6B8B-4DD0-A469-D4A0CF55B201}|dotnetdemoapi\\dotnetdemoapi.csproj|solutionrelative:dotnetdemoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "E:\\dotnetdemoapi\\dotnetdemoapi\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "dotnetdemoapi\\Properties\\launchSettings.json",
+              "ToolTip": "E:\\dotnetdemoapi\\dotnetdemoapi\\Properties\\launchSettings.json",
+              "RelativeToolTip": "dotnetdemoapi\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-17T03:48:03.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\dotnetdemoapi\\dotnetdemoapi\\Program.cs",
+              "RelativeDocumentMoniker": "dotnetdemoapi\\Program.cs",
+              "ToolTip": "E:\\dotnetdemoapi\\dotnetdemoapi\\Program.cs",
+              "RelativeToolTip": "dotnetdemoapi\\Program.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAYwAcAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T03:42:36.966Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 185,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
