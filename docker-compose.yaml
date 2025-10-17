@@ -1,8 +1,11 @@
 services:
   api:
     image: dotnetdemoapi:${IMAGE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: dotnetdemoapi/dotnetdemoapi/Dockerfile
     ports:
-      - "5151:5151"                 # host:container
+      - "5151:5151"         
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_URLS=http://+:5151  # HTTP only
+      - ASPNETCORE_URLS=http://+:5151
