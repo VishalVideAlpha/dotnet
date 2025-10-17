@@ -3,11 +3,6 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 
-ENV NUGET_PACKAGES=/root/.nuget/packages
-ENV NUGET_FALLBACK_PACKAGES=
-ENV DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
-ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
-
 
 COPY dotnetdemoapi/dotnetdemoapi/*.csproj ./dotnetdemoapi/
 
