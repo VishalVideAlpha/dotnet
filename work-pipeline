@@ -1,0 +1,95 @@
+pipeline {
+  agent { label 'dev' }  
+  options { timestamps() }
+
+  environment {
+    IMAGE_NAME = 'dotnetdemoapi'
+
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git branch: 'main',
+            url: 'https://github.com/VishalVideAlpha/dotnet.git'
+      
+      }
+    }
+
+    stage('Resolve Defaults') {
+      steps {
+        script {
+          def supplied = env.IMAGE_TAG?.trim()
+          def fallback = (env.GIT_COMMIT ? env.GIT_COMMIT.take(7) : (env.BUILD_NUMBER ?: 'latest'))
+          env.IMAGE_TAG = (supplied && supplied != 'null') ? supplied : fallback
+          env.IMAGE_TAG = env.IMAGE_TAG.replaceAll(/[^0-9A-Za-z_.-]/, '-') 
+          echo "Using IMAGE_NAME=${env.IMAGE_NAME}, IMAGE_TAG=${env.IMAGE_TAG}"
+        }
+      }
+    }
+
+    stage('Restore & Test (.NET)') {
+      steps {
+        bat '''
+dotnet --version
+dotnet restore "dotnetdemoapi\\dotnetdemoapi\\dotnetdemoapi.csproj"
+REM Run tests if a "tests" folder exists
+if exist tests (
+  for /F "delims=" %%F in ('dir /b /s tests\\*.csproj 2^>NUL') do (
+    echo Running tests in %%F
+    dotnet test "%%F" -c Release --no-restore
+  )
+) else (
+  echo No tests directory found, skipping dotnet test.
+)
+'''
+      }
+    }
+
+    stage('Publish (.NET)') {
+      steps {
+        bat '''
+dotnet publish "dotnetdemoapi\\dotnetdemoapi\\dotnetdemoapi.csproj" -c Release -o out --no-restore
+'''
+      }
+    }
+
+    stage('Build Docker image') {
+      steps {
+        bat '''
+if "%IMAGE_TAG%"=="" set IMAGE_TAG=latest
+echo Building %IMAGE_NAME%:%IMAGE_TAG%
+docker build -f "dotnetdemoapi\\dotnetdemoapi\\Dockerfile" -t "%IMAGE_NAME%:%IMAGE_TAG%" .
+'''
+      }
+    }
+
+    stage('Login & Push') {
+      when { expression { return env.DOCKERHUB_USER && env.DOCKERHUB_TOKEN } }
+      steps {
+        bat '''
+echo %DOCKERHUB_TOKEN% | docker login -u %DOCKERHUB_USER% --password-stdin
+docker tag "%IMAGE_NAME%:%IMAGE_TAG%" "%DOCKERHUB_USER%/%IMAGE_NAME%:%IMAGE_TAG%"
+docker push "%DOCKERHUB_USER%/%IMAGE_NAME%:%IMAGE_TAG%"
+'''
+      }
+    }
+
+    stage('Deploy with Compose') {
+      when { expression { return fileExists('docker-compose.yaml') } }
+      steps {
+        bat '''
+docker compose pull  || ver >NUL
+docker compose up -d --force-recreate
+'''
+      }
+    }
+  } 
+
+  post {
+    always {
+      bat 'docker images'
+      bat 'docker ps'
+    }
+  }
+}
