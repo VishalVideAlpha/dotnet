@@ -10,8 +10,7 @@ ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 
 COPY dotnetdemoapi/dotnetdemoapi/*.csproj ./dotnetdemoapi/
-# If you have central package management, also copy the props before the first restore:
-# COPY Directory.Packages.props ./
+
 RUN dotnet restore ./dotnetdemoapi/dotnetdemoapi.csproj
 
 
