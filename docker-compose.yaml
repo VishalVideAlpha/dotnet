@@ -2,11 +2,8 @@ services:
   api:
     image: dotnetdemoapi:${IMAGE_TAG:-latest}
     ports:
-      - "5151:5151"
-      - "5152:5152"
+      - "8085:5151"     
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_URLS=http://+:5151;https://+:5152
-      - ASPNETCORE_HTTPS_PORT=5152
-    volumes:
-      - ./certs:/https:ro
+      - ASPNETCORE_URLS=http://+:5151  
+  
