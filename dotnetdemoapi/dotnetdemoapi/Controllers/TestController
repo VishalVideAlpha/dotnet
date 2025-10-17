@@ -8,7 +8,7 @@ namespace dotnetdemoapi.Controllers
     {
         private static readonly string[] tests = new[]
         {
-            "test1", "employee", "test2", "test3" 
+            "test1", "employee", "test2", "test3"
         };
 
         private readonly ILogger<TestController> _logger;
@@ -19,12 +19,12 @@ namespace dotnetdemoapi.Controllers
         }
 
         [HttpGet(Name = "GetTest")]
-        public IEnumerable<TestController> Get()
+        public IEnumerable<TestModel> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new TestController
+            return Enumerable.Range(1, 5).Select(index => new TestModel
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                name = test[Random.Shared.Next(name.Length)]
+                Name = tests[Random.Shared.Next(tests.Length)]
             })
             .ToArray();
         }
