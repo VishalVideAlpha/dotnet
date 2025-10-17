@@ -24,7 +24,7 @@ namespace dotnetdemoapi.Controllers
             return Enumerable.Range(1, 3).Select(index => new TestModel
             {
                 number=index,
-                Name = tests[Random.Shared.Next(tests.Length)]
+                name = tests[Random.Shared.Next(tests.Length)]
             })
             .ToArray();
         }
